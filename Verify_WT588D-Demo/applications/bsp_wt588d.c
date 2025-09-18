@@ -5,43 +5,9 @@
  *
  * Change Logs:
  * Date           Author       Notes
- * 2025-08-05     18452       the first version
+ * 2025-09-18     Administrator       the first version
  */
 #include "bsp_wt588d.h"
-
-
-//--------------------------------------------------------------------------------------------------------
-#define WT588D_CLK_H()      HAL_GPIO_WritePin(WT588D_CLK_GPIO_Port,  WT588D_CLK_Pin,    GPIO_PIN_SET)
-#define WT588D_CLK_L()      HAL_GPIO_WritePin(WT588D_CLK_GPIO_Port,  WT588D_CLK_Pin,    GPIO_PIN_RESET)
-#define WT588D_CS_H()       HAL_GPIO_WritePin(WT588D_CS_GPIO_Port,   WT588D_CS_Pin,     GPIO_PIN_SET)
-#define WT588D_CS_L()       HAL_GPIO_WritePin(WT588D_CS_GPIO_Port,   WT588D_CS_Pin,     GPIO_PIN_RESET)
-#define WT588D_DATA_H()     HAL_GPIO_WritePin(WT588D_DATA_GPIO_Port, WT588D_DATA_Pin,   GPIO_PIN_SET)
-#define WT588D_DATA_L()     HAL_GPIO_WritePin(WT588D_DATA_GPIO_Port, WT588D_DATA_Pin,   GPIO_PIN_RESET)
-#define WT588D_RST_H()      HAL_GPIO_WritePin(WT588_RST_GPIO_Port,   WT588_RST_Pin,    GPIO_PIN_SET)
-#define WT588D_RST_L()      HAL_GPIO_WritePin(WT588_RST_GPIO_Port,   WT588_RST_Pin,    GPIO_PIN_RESET)
-
-
-//--------------------------------------------------------------------------------------------------------
-#define WT588D_CMD_VOLUME_LEVEL0        0xE0
-#define WT588D_CMD_VOLUME_LEVEL1        0xE1
-#define WT588D_CMD_VOLUME_LEVEL2        0xE2
-#define WT588D_CMD_VOLUME_LEVEL3        0xE3
-#define WT588D_CMD_VOLUME_LEVEL4        0xE4
-#define WT588D_CMD_VOLUME_LEVEL5        0xE5
-#define WT588D_CMD_VOLUME_LEVEL6        0xE6
-#define WT588D_CMD_VOLUME_LEVEL7        0xE7
-#define WT588D_CMD_LOOP_PLAYBACK        0xF2
-#define WT588D_CMD_STOP_PLAYING         0xFE
-
-
-//--------------------------------------------------------------------------------------------------------
-void WT588D_Delay_us(uint32_t us);
-void WT588D_Write_Byte(rt_uint8_t data);
-void WT588D_Set_Cmd(rt_uint8_t cmd);
-rt_uint8_t WT588D_Busy_Check(void);
-void WT588D_Loop_Playback(void);
-void WT588D_Stop(void);
-void WT588D_Set_Volume(rt_uint8_t cmd);
 
 
 /**
@@ -73,9 +39,9 @@ void WT588D_Write_Byte(rt_uint8_t data)
         else {
             WT588D_DATA_L();
         }
-        WT588D_Delay_us(5);
+        WT588D_Delay_us(150);
         WT588D_CLK_H();
-        WT588D_Delay_us(5);
+        WT588D_Delay_us(150);
         data >>= 1;
     }
 }
@@ -107,13 +73,9 @@ void WT588D_Write_Byte(rt_uint8_t data)
   */
 void WT588D_Set_Cmd(rt_uint8_t cmd)
 {
-    WT588D_RST_L();
-    rt_thread_mdelay(5);
-    WT588D_RST_H();
-    rt_thread_mdelay(20);
+
     WT588D_CS_L();
     rt_thread_mdelay(5);
-
     WT588D_Write_Byte(cmd);
     WT588D_CS_H();
 }
@@ -181,61 +143,17 @@ void WT588D_Set_Volume(rt_uint8_t cmd)
 
 
 
-/**
-  * @brief  This thread entry is used for NixieTube scanning
-  * @retval void
-  */
-void WT588D_Thread_entry(void* parameter)
-{
-    rt_uint16_t playCnt = 0;
-    WT588D_Set_Volume(WT588D_CMD_VOLUME_LEVEL7);
-    WT588D_Set_Cmd(0x00);
-
-
-    for(;;)
-    {
-        if(WT588D_Busy_Check() == 1){
-            playCnt++;
-            if(playCnt == 1){
-                rt_kprintf("PRINTF:%d. The voice is playing now\r\n", Record.kprintf_cnt++);
-            }
-        }
-        else{
-            if(playCnt != 0){
-                rt_kprintf("PRINTF:%d. The voice is pausing now\r\n", Record.kprintf_cnt++);
-            }
-            playCnt = 0;
-        }
-
-        rt_thread_mdelay(100);
-    }
-
-}
 
 
 
-/**
-  * @brief  This is a Initialization for water level Check
-  * @retval int
-  */
-int WT588D_Thread_Init(void)
-{
-    rt_thread_t WT588D_Task_Handle = RT_NULL;
-    /* 创建检查一些系统状态标志的线程  -- 优先级：25 */
-    WT588D_Task_Handle = rt_thread_create("WT588D_Thread_entry", WT588D_Thread_entry, RT_NULL, 1024, 25, 30);
-    /* 检查是否创建成功,成功就启动线程 */
-    if(WT588D_Task_Handle != RT_NULL)
-    {
-        rt_kprintf("PRINTF:%d. WT588D_Thread_entry is Succeed!! \r\n",Record.kprintf_cnt++);
-        rt_thread_startup(WT588D_Task_Handle);
-    }
-    else {
-        rt_kprintf("PRINTF:%d. WT588D_Thread_entry is Failed \r\n",Record.kprintf_cnt++);
-    }
 
-    return RT_EOK;
-}
-INIT_APP_EXPORT(WT588D_Thread_Init);
+
+
+
+
+
+
+
 
 
 

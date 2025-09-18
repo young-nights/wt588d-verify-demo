@@ -37,6 +37,7 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 extern UART_HandleTypeDef huart1;
+
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -58,18 +59,18 @@ void MX_USART1_UART_Init(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define WT588D_CLK_Pin GPIO_PIN_12
-#define WT588D_CLK_GPIO_Port GPIOB
-#define WT588D_CS_Pin GPIO_PIN_13
-#define WT588D_CS_GPIO_Port GPIOB
-#define WT588D_DATA_Pin GPIO_PIN_14
-#define WT588D_DATA_GPIO_Port GPIOB
-#define WT588_RST_Pin GPIO_PIN_15
-#define WT588_RST_GPIO_Port GPIOB
+#define WT588D_BUSY_Pin GPIO_PIN_5
+#define WT588D_BUSY_GPIO_Port GPIOA
 #define VOICE_CTRL_Pin GPIO_PIN_6
-#define VOICE_CTRL_GPIO_Port GPIOC
-#define WT588D_BUSY_Pin GPIO_PIN_7
-#define WT588D_BUSY_GPIO_Port GPIOC
+#define VOICE_CTRL_GPIO_Port GPIOA
+#define WT588D_RST_Pin GPIO_PIN_7
+#define WT588D_RST_GPIO_Port GPIOA
+#define WT588D_CLK_Pin GPIO_PIN_13
+#define WT588D_CLK_GPIO_Port GPIOB
+#define WT588D_DATA_Pin GPIO_PIN_15
+#define WT588D_DATA_GPIO_Port GPIOB
+#define WT588D_CS_Pin GPIO_PIN_6
+#define WT588D_CS_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 

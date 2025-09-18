@@ -18,7 +18,7 @@ config PKGS_DIR
 config PLATFORM_DIR
     string
     option env="PLATFORM_DIR"
-    default  "E:/Outsource_Item_Workspace/Floder-001-Cardiopulmonary/Code-Demo/WT588D-Verify-Demo/Verify_WT588D-Demo/platform"
+    default "I:/GitHub-young-nights/wt588d-verify-demo/Verify_WT588D-Demo/platform"
 
 source "$RTT_DIR/Kconfig"
 source "$PKGS_DIR/Kconfig"
