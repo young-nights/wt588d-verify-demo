@@ -59,12 +59,12 @@ void WT588D_Thread_entry(void* parameter)
         if(WT588D_Busy_Check() == 1){
             playCnt++;
             if(playCnt == 1){
-                rt_kprintf("PRINTF:%d. The voice is playing now\r\n", Record.kprintf_cnt++);
+                rt_kprintf("PRINTF:%d. The voice is pausing now\r\n", Record.kprintf_cnt++);
             }
         }
         else{
             if(playCnt != 0){
-                rt_kprintf("PRINTF:%d. The voice is pausing now\r\n", Record.kprintf_cnt++);
+                rt_kprintf("PRINTF:%d. The voice is playing now\r\n", Record.kprintf_cnt++);
             }
             playCnt = 0;
         }
