@@ -30,7 +30,7 @@ void WT588D_Thread_entry(void* parameter)
     WT588D_RST_H();
     rt_thread_mdelay(30);
 
-    WT588D_Set_Cmd(WT588D_ADDR_VOICE_1);
+    WT588D_Set_Cmd(WT588D_ADDR_VOICE_0);
     WT588D_Set_Volume(WT588D_CMD_VOLUME_LEVEL7);
     rt_thread_mdelay(50);
     WT588D_Set_Cmd(WT588D_CMD_LOOP_PLAYBACK);

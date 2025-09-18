@@ -44,6 +44,7 @@ void WT588D_Write_Byte(rt_uint8_t data)
         WT588D_Delay_us(150);
         data >>= 1;
     }
+    WT588D_CLK_L();
 }
 
 
@@ -77,6 +78,7 @@ void WT588D_Set_Cmd(rt_uint8_t cmd)
     WT588D_CS_L();
     rt_thread_mdelay(5);
     WT588D_Write_Byte(cmd);
+
     WT588D_CS_H();
 }
 
@@ -140,7 +142,6 @@ void WT588D_Set_Volume(rt_uint8_t cmd)
     rt_thread_mdelay(90);
     WT588D_Set_Cmd(cmd);
 }
-
 
 
 

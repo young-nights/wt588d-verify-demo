@@ -47,7 +47,6 @@ UART_HandleTypeDef huart1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -223,12 +222,19 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
   HAL_GPIO_Init(WT588D_RST_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : WT588D_CLK_Pin WT588D_DATA_Pin */
-  GPIO_InitStruct.Pin = WT588D_CLK_Pin|WT588D_DATA_Pin;
+  /*Configure GPIO pin : WT588D_CLK_Pin */
+  GPIO_InitStruct.Pin = WT588D_CLK_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  HAL_GPIO_Init(WT588D_CLK_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : WT588D_DATA_Pin */
+  GPIO_InitStruct.Pin = WT588D_DATA_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(WT588D_DATA_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : WT588D_CS_Pin */
   GPIO_InitStruct.Pin = WT588D_CS_Pin;
@@ -244,7 +250,6 @@ void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 /* USER CODE END 4 */
-
 
 
 #ifdef  USE_FULL_ASSERT

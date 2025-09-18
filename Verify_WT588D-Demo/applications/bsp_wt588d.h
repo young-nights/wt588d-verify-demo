@@ -40,7 +40,18 @@
 #define WT588D_CMD_LOOP_PLAYBACK        0xF2
 #define WT588D_CMD_STOP_PLAYING         0xFE
 
-#define WT588D_ADDR_VOICE_1             0x00
+#define WT588D_ADDR_VOICE_0             0x00
+#define WT588D_ADDR_VOICE_1             0x01
+#define WT588D_ADDR_VOICE_2             0x02
+#define WT588D_ADDR_VOICE_3             0x03
+#define WT588D_ADDR_VOICE_4             0x04
+#define WT588D_ADDR_VOICE_5             0x05
+#define WT588D_ADDR_VOICE_6             0x06
+#define WT588D_ADDR_VOICE_7             0x07
+#define WT588D_ADDR_VOICE_8             0x08
+#define WT588D_ADDR_VOICE_9             0x09
+#define WT588D_ADDR_VOICE_10            0x0A
+#define WT588D_ADDR_VOICE_11            0x0B
 
 //--------------------------------------------------------------------------------------------------------
 void WT588D_Delay_us(uint32_t us);
