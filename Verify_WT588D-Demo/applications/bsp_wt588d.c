@@ -39,7 +39,7 @@ void WT588D_Write_Byte(rt_uint8_t data)
         else {
             WT588D_DATA_L();
         }
-        WT588D_Delay_us(150);
+        WT588D_Delay_us(150); // 实际34us
         WT588D_CLK_H();
         WT588D_Delay_us(150);
         data >>= 1;
