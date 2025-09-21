@@ -25,6 +25,8 @@ void WT588D_Thread_entry(void* parameter)
 {
     rt_uint16_t playCnt = 0;
 
+    LM4871_CTRL_L();
+
     WT588D_RST_L();
     rt_thread_mdelay(10);
     WT588D_RST_H();
