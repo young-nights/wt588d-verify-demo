@@ -74,7 +74,6 @@ void WT588D_Write_Byte(rt_uint8_t data)
   */
 void WT588D_Set_Cmd(rt_uint8_t cmd)
 {
-
     WT588D_CS_L();
     rt_thread_mdelay(5);
     WT588D_Write_Byte(cmd);
@@ -95,7 +94,7 @@ rt_uint8_t WT588D_Busy_Check(void)
 {
     static rt_uint8_t status = 0;
 
-    status = HAL_GPIO_ReadPin(WT588D_BUSY_GPIO_Port, WT588D_BUSY_Pin);
+    status = HAL_GPIO_ReadPin(WT588D_BUSY1_GPIO_Port, WT588D_BUSY1_Pin);
 
     return status;
 }
@@ -139,7 +138,6 @@ void WT588D_Stop(void)
   */
 void WT588D_Set_Volume(rt_uint8_t cmd)
 {
-    rt_thread_mdelay(90);
     WT588D_Set_Cmd(cmd);
 }
 

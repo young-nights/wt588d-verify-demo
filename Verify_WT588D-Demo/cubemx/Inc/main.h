@@ -53,18 +53,17 @@ void MX_USART1_UART_Init(void);
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define WT588D_BUSY_Pin GPIO_PIN_5
-#define WT588D_BUSY_GPIO_Port GPIOA
-#define VOICE_CTRL_Pin GPIO_PIN_6
-#define VOICE_CTRL_GPIO_Port GPIOA
-#define WT588D_RST_Pin GPIO_PIN_7
-#define WT588D_RST_GPIO_Port GPIOA
+#define WT588D_BUSY2_Pin GPIO_PIN_5
+#define WT588D_BUSY2_GPIO_Port GPIOA
+#define WT588D_BUSY1_Pin GPIO_PIN_6
+#define WT588D_BUSY1_GPIO_Port GPIOA
+#define WT588D_RESET1_Pin GPIO_PIN_1
+#define WT588D_RESET1_GPIO_Port GPIOB
 #define WT588D_CLK_Pin GPIO_PIN_13
 #define WT588D_CLK_GPIO_Port GPIOB
 #define WT588D_DATA_Pin GPIO_PIN_15

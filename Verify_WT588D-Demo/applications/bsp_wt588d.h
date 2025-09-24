@@ -14,8 +14,6 @@
 
 
 
-#define LM4871_CTRL_H()     HAL_GPIO_WritePin(VOICE_CTRL_GPIO_Port,  VOICE_CTRL_Pin,    GPIO_PIN_SET)
-#define LM4871_CTRL_L()     HAL_GPIO_WritePin(VOICE_CTRL_GPIO_Port,  VOICE_CTRL_Pin,    GPIO_PIN_RESET)
 //--------------------------------------------------------------------------------------------------------
 #define WT588D_CLK_H()      HAL_GPIO_WritePin(WT588D_CLK_GPIO_Port,  WT588D_CLK_Pin,    GPIO_PIN_SET)
 #define WT588D_CLK_L()      HAL_GPIO_WritePin(WT588D_CLK_GPIO_Port,  WT588D_CLK_Pin,    GPIO_PIN_RESET)
@@ -23,8 +21,8 @@
 #define WT588D_CS_L()       HAL_GPIO_WritePin(WT588D_CS_GPIO_Port,   WT588D_CS_Pin,     GPIO_PIN_RESET)
 #define WT588D_DATA_H()     HAL_GPIO_WritePin(WT588D_DATA_GPIO_Port, WT588D_DATA_Pin,   GPIO_PIN_SET)
 #define WT588D_DATA_L()     HAL_GPIO_WritePin(WT588D_DATA_GPIO_Port, WT588D_DATA_Pin,   GPIO_PIN_RESET)
-#define WT588D_RST_H()      HAL_GPIO_WritePin(WT588D_RST_GPIO_Port,  WT588D_RST_Pin,    GPIO_PIN_SET)
-#define WT588D_RST_L()      HAL_GPIO_WritePin(WT588D_RST_GPIO_Port,  WT588D_RST_Pin,    GPIO_PIN_RESET)
+#define WT588D_RST_H()      HAL_GPIO_WritePin(WT588D_RESET1_GPIO_Port,  WT588D_RESET1_Pin,    GPIO_PIN_SET)
+#define WT588D_RST_L()      HAL_GPIO_WritePin(WT588D_RESET1_GPIO_Port,  WT588D_RESET1_Pin,    GPIO_PIN_RESET)
 
 
 

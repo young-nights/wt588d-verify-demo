@@ -191,43 +191,23 @@ void MX_GPIO_Init(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(VOICE_CTRL_GPIO_Port, VOICE_CTRL_Pin, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(WT588D_RST_GPIO_Port, WT588D_RST_Pin, GPIO_PIN_SET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, WT588D_CLK_Pin|WT588D_DATA_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, WT588D_RESET1_Pin|WT588D_CLK_Pin|WT588D_DATA_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(WT588D_CS_GPIO_Port, WT588D_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : WT588D_BUSY_Pin */
-  GPIO_InitStruct.Pin = WT588D_BUSY_Pin;
+  /*Configure GPIO pins : WT588D_BUSY2_Pin WT588D_BUSY1_Pin */
+  GPIO_InitStruct.Pin = WT588D_BUSY2_Pin|WT588D_BUSY1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  HAL_GPIO_Init(WT588D_BUSY_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : VOICE_CTRL_Pin */
-  GPIO_InitStruct.Pin = VOICE_CTRL_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(VOICE_CTRL_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : WT588D_RST_Pin */
-  GPIO_InitStruct.Pin = WT588D_RST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
-  HAL_GPIO_Init(WT588D_RST_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : WT588D_CLK_Pin */
-  GPIO_InitStruct.Pin = WT588D_CLK_Pin;
+  /*Configure GPIO pins : WT588D_RESET1_Pin WT588D_CLK_Pin */
+  GPIO_InitStruct.Pin = WT588D_RESET1_Pin|WT588D_CLK_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(WT588D_CLK_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : WT588D_DATA_Pin */
   GPIO_InitStruct.Pin = WT588D_DATA_Pin;
