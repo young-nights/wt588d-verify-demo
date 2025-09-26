@@ -13,10 +13,6 @@
 
 
 
-
-
-
-
 /**
   * @brief  This thread entry is used for NixieTube scanning
   * @retval void
@@ -41,7 +37,7 @@ void WT588D_Thread_entry(void* parameter)
             rt_kprintf("PRINTF:%d. The voice is playing now\r\n", Record.kprintf_cnt++);
         }
 
-        rt_thread_mdelay(3000);
+        rt_thread_mdelay(8000);
     }
 
 }
